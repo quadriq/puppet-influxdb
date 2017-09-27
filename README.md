@@ -1,4 +1,4 @@
-# Puppet Module `influxdb`
+# Puppet InfluxDB
 
 Puppet Module to setup and manage `influxdb` installation and resources.
 
@@ -23,7 +23,7 @@ classes:
 
 see `manifests/config.pp` for supported parameters. Otherwise you can do:
 
-```
+```puppet
 $parameter =
 { 'global' =>
   {
@@ -57,7 +57,7 @@ influxdb::config:
 
 create database
 
-```
+```puppet
 influx_database{"testme2":
 }
 ```
@@ -72,7 +72,7 @@ parameter
 * `database` - on which database grant privileges, relevant only for non-admin users. Requires database to be created.
 * `privileges` - privileges to grant, default to `'ALL'`
 
-```  
+```puppet
 influx_user{"homer":
      password => "marge",
      ensure => present,

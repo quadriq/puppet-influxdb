@@ -1,6 +1,7 @@
-# This file can be used to install module depdencies for unit testing
-# See https://github.com/puppetlabs/puppetlabs_spec_helper#using-fixtures for details
----
 fixtures:
-  forge_modules:
-#     stdlib: "puppetlabs/stdlib"
+  repositories:
+    stdlib:
+      repo: 'https://github.com/puppetlabs/puppetlabs-stdlib'
+      ref:  '4.12.0'
+  symlinks:
+    influxdb: "#{source_dir}"

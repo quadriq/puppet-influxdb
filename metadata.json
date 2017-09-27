@@ -4,32 +4,41 @@
   "author": "Nilsen",
   "summary": "Manage InfluxDB",
   "license": "Apache-2.0",
-  "source": "",
+  "source": " https://github.com/quadriq/puppet-influxdb",
+  "project_page": "https://github.com/quadriq/puppet-influxdb",
+  "issues_url": "https://github.com/quadriq/puppet-influxdb/issues",
   "dependencies": [{
     "name": "puppetlabs/stdlib",
     "version_requirement": ">= 1.0.0 <4.13.0"
   }],
+  "tags": [
+    "influxdb",
+  ],
   "operatingsystem_support": [{
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
+        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
+        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
+        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "Scientific",
       "operatingsystemrelease": [
+        "6",
         "7"
       ]
     }
