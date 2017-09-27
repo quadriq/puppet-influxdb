@@ -12,7 +12,6 @@ class influxdb(
     config => $config,
   } ->
 
-
   # exec{'install_influxdb_gem':
   #    command => '/bin/gem install influxdb -v 0.3.16',
   #    unless  => '/bin/gem list | grep influxdb'

@@ -1,3 +1,4 @@
+#class to config influxdb
 class influxdb::config(
     $config = {},
   ){
