@@ -9,7 +9,7 @@
   "issues_url": "https://github.com/quadriq/puppet-influxdb/issues",
   "dependencies": [{
     "name": "puppetlabs/stdlib",
-    "version_requirement": ">= 1.0.0 <4.13.0"
+    "version_requirement": ">= 4.13.1"
   }],
   "tags": [
     "influxdb"
