@@ -1,0 +1,41 @@
+{
+  "name": "puppet-influxdb",
+  "version": "0.1.0",
+  "author": "Nilsen",
+  "summary": "Manage InfluxDB",
+  "license": "Apache-2.0",
+  "source": "",
+  "dependencies": [{
+    "name": "puppetlabs/stdlib",
+    "version_requirement": ">= 1.0.0 <4.13.0"
+  }],
+  "operatingsystem_support": [{
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    }
+  ],
+  "requirements": [{
+    "name": "puppet",
+    "version_requirement": ">= 3.0.0 < 6.0.0"
+  }]
+}
