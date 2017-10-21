@@ -1,6 +1,6 @@
 {
-  "name": "quadriq-influxdb",
-  "version": "0.1.0",
+  "name": "puppet-influxdb",
+  "version": "0.2.0",
   "author": "Nilsen",
   "summary": "Manage InfluxDB",
   "license": "Apache-2.0",
@@ -12,7 +12,7 @@
     "version_requirement": ">= 4.13.1"
   }],
   "tags": [
-    "influxdb"
+    "influxdb", "influx"
   ],
   "operatingsystem_support": [{
       "operatingsystem": "CentOS",

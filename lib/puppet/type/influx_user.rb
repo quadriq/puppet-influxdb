@@ -25,4 +25,14 @@ Puppet::Type.newtype(:influx_user) do
     defaultto 'ALL'
   end
 
+  newparam(:superuser) do
+    desc "User Database"
+    defaultto(:undef)
+  end
+
+  newparam(:superpass) do
+    desc "User Database"
+    defaultto(:undef)
+  end
+
 end
