@@ -67,6 +67,8 @@ class {"influxdb":
 
 ## Custom resource-types
 
+all resource types using `influx` cli command to communicate with influxdb. Because `influx` cli command uses http interface of influxdb, we also need to do a http-auth, if this is enabled. So pass `superuser` creadentials to all resource types, if http-auth is enabled.
+
 ### influx_database
 
 create database
