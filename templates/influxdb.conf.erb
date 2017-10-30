@@ -83,36 +83,42 @@ bind-address = "<%= @final_config['global']['bind-adress'] %>"
   # CacheMaxMemorySize is the maximum size a shard's cache can
   # reach before it starts rejecting writes.
   # cache-max-memory-size = 1048576000
+  cache-max-memory-size = <%= @final_config['data']['cache-max-memory-size'] %>
 
   # CacheSnapshotMemorySize is the size at which the engine will
   # snapshot the cache and write it to a TSM file, freeing up memory
   # cache-snapshot-memory-size = 26214400
+  cache-snapshot-memory-size = <%= @final_config['data']['cache-snapshot-memory-size'] %>
 
   # CacheSnapshotWriteColdDuration is the length of time at
   # which the engine will snapshot the cache and write it to
   # a new TSM file if the shard hasn't received writes or deletes
   # cache-snapshot-write-cold-duration = "10m"
+  cache-snapshot-write-cold-duration = "<%= @final_config['data']['cache-snapshot-write-cold-duration'] %>"
 
   # CompactFullWriteColdDuration is the duration at which the engine
   # will compact all TSM files in a shard if it hasn't received a
   # write or delete
   # compact-full-write-cold-duration = "4h"
+  cache-snapshot-memory-size = "<%= @final_config['data']['compact-full-write-cold-duration'] %>"
 
   # The maximum number of concurrent full and level compactions that can run at one time.  A
   # value of 0 results in runtime.GOMAXPROCS(0) used at runtime.  This setting does not apply
   # to cache snapshotting.
   # max-concurrent-compactions = 0
+  max-concurrent-compactions = <%= @final_config['data']['max-concurrent-compactions'] %>
 
   # The maximum series allowed per database before writes are dropped.  This limit can prevent
   # high cardinality issues at the database level.  This limit can be disabled by setting it to
   # 0.
   # max-series-per-database = 1000000
+  max-series-per-database = <%= @final_config['data']['max-series-per-database'] %>
 
   # The maximum number of tag values per tag that are allowed before writes are dropped.  This limit
   # can prevent high cardinality tag values from being written to a measurement.  This limit can be
   # disabled by setting it to 0.
   # max-values-per-tag = 100000
-
+  max-values-per-tag = <%= @final_config['data']['max-values-per-tag'] %>
 ###
 ### [coordinator]
 ###
@@ -122,32 +128,39 @@ bind-address = "<%= @final_config['global']['bind-adress'] %>"
 [coordinator]
   # The default time a write request will wait until a "timeout" error is returned to the caller.
   # write-timeout = "10s"
+  write-timeout = "<%= @final_config['coordinator']['write-timeout'] %>"
 
   # The maximum number of concurrent queries allowed to be executing at one time.  If a query is
   # executed and exceeds this limit, an error is returned to the caller.  This limit can be disabled
   # by setting it to 0.
   # max-concurrent-queries = 0
+  max-concurrent-queries = <%= @final_config['coordinator']['max-concurrent-queries'] %>
 
   # The maximum time a query will is allowed to execute before being killed by the system.  This limit
   # can help prevent run away queries.  Setting the value to 0 disables the limit.
   # query-timeout = "0s"
+  query-timeout = "<%= @final_config['coordinator']['query-timeout'] %>"
 
   # The time threshold when a query will be logged as a slow query.  This limit can be set to help
   # discover slow or resource intensive queries.  Setting the value to 0 disables the slow query logging.
   # log-queries-after = "0s"
+  log-queries-after = "<%= @final_config['coordinator']['log-queries-after'] %>"
 
   # The maximum number of points a SELECT can process.  A value of 0 will make
   # the maximum point count unlimited.  This will only be checked every 10 seconds so queries will not
   # be aborted immediately when hitting the limit.
   # max-select-point = 0
+  max-select-point = <%= @final_config['coordinator']['max-select-point'] %>
 
   # The maximum number of series a SELECT can run.  A value of 0 will make the maximum series
   # count unlimited.
   # max-select-series = 0
+  max-select-series = <%= @final_config['coordinator']['max-select-series'] %>
 
   # The maxium number of group by time bucket a SELECT can create.  A value of zero will max the maximum
   # number of buckets unlimited.
   # max-select-buckets = 0
+  max-select-buckets = <%= @final_config['coordinator']['max-select-buckets'] %>
 
 ###
 ### [retention]
@@ -158,9 +171,12 @@ bind-address = "<%= @final_config['global']['bind-adress'] %>"
 [retention]
   # Determines whether retention policy enforcement enabled.
   # enabled = true
+  enabled = <%= @final_config['retention']['enabled'] %>
 
   # The interval of time when retention policy enforcement checks run.
   # check-interval = "30m"
+  check-interval = "<%= @final_config['retention']['check-interval'] %>"
+
 
 ###
 ### [shard-precreation]

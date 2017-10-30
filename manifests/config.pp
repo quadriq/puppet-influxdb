@@ -20,6 +20,22 @@ class influxdb::config(
         'index-version' => 'inmem',
         'trace-logging-enabled' => false,
         'query-log-enabled' => true,
+        'cache-max-memory-size' => 1048576000,
+        'cache-snapshot-memory-size' => 26214400,
+        'cache-snapshot-write-cold-duration' => '10m',
+        'compact-full-write-cold-duration' => '4h',
+        'max-concurrent-compactions' => 0,
+        'max-series-per-database' => 1000000,
+        'max-values-per-tag' => 100000,
+      },
+      'coordinator' => {
+        'write-timeout' => '10s',
+        'coordinator' => 0,
+        'query-timeout' => '0s',
+        'log-queries-after' => '0s',
+        'max-select-point' => 0,
+        'max-select-series' => 0,
+        'max-select-buckets' => 0,
       },
       'retention' => {
         'enabled' => true,
@@ -43,12 +59,6 @@ class influxdb::config(
         'bind-socket' => '/var/run/influxdb.sock',
       },
   }
-
-  # Determines whether retention policy enforcement enabled.
-  # enabled = true
-
-  # The interval of time when retention policy enforcement checks run.
-  # check-interval = "30m"
 
   $final_config = deep_merge($default_config, $config)
 
