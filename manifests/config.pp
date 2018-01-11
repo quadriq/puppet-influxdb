@@ -1,6 +1,7 @@
 #class to config influxdb
 class influxdb::config(
     $config = {},
+    $config_template = 'influxdb/influxdb.conf.erb',
   ){
 
   $default_config = {
@@ -63,7 +64,7 @@ class influxdb::config(
   $final_config = deep_merge($default_config, $config)
 
   file {'/etc/influxdb/influxdb.conf':
-    content => template('influxdb/influxdb.conf.erb'),
+    content => template($config_template),
     notify  => Service['influxd']
   }
 }
