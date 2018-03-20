@@ -100,7 +100,7 @@ bind-address = "<%= @final_config['global']['bind-adress'] %>"
   # will compact all TSM files in a shard if it hasn't received a
   # write or delete
   # compact-full-write-cold-duration = "4h"
-  cache-snapshot-memory-size = "<%= @final_config['data']['compact-full-write-cold-duration'] %>"
+  compact-full-write-cold-duration = "<%= @final_config['data']['compact-full-write-cold-duration'] %>"
 
   # The maximum number of concurrent full and level compactions that can run at one time.  A
   # value of 0 results in runtime.GOMAXPROCS(0) used at runtime.  This setting does not apply
