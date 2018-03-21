@@ -2,6 +2,7 @@
 class influxdb(
   $version = '1.3.4',
   $config  = {},
+  $config_template = 'influxdb/influxdb.conf.erb',
   $auth_enabled = false,
   $auth_superuser = undef,
   $auth_superpass = undef,
@@ -25,6 +26,7 @@ class influxdb(
 
   class{'influxdb::config':
     config => $mconfig,
+    config_template => $config_template,
   } ->
 
   service {'influxd':
