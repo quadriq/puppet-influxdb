@@ -37,6 +37,7 @@ class influxdb::config(
         'max-select-point' => 0,
         'max-select-series' => 0,
         'max-select-buckets' => 0,
+        'max-concurrent-queries' => 0,
       },
       'retention' => {
         'enabled' => true,

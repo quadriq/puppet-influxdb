@@ -35,7 +35,6 @@ class influxdb(
   }
 
   if ($auth_enabled){
-    notify{"auth en":}
     influx_config_auth{"config-auth":
       superuser => $auth_superuser,
       superpass => $auth_superpass
