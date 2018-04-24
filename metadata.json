@@ -12,7 +12,7 @@
     "version_requirement": ">= 4.13.1"
   }],
   "tags": [
-    "influxdb", "influx"
+    "influxdb", "influx", "puppet-influxdb"
   ],
   "operatingsystem_support": [{
       "operatingsystem": "CentOS",
