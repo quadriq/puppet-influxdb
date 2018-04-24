@@ -2,7 +2,7 @@
   "name": "quadriq-influxdb",
   "version": "0.2.0",
   "author": "Nilsen",
-  "summary": "Manage InfluxDB",
+  "summary": "Manage InfluxDB service, databases, users. Supports Auth. Using ruby resource types for InfluxDB operations. ",
   "license": "Apache-2.0",
   "source": " https://github.com/quadriq/puppet-influxdb",
   "project_page": "https://github.com/quadriq/puppet-influxdb",
