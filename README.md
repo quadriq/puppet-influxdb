@@ -80,6 +80,7 @@ parameter
 
 ```puppet
 influx_database{"testme2":
+  ensure => present,
 }
 ```
 
@@ -87,6 +88,7 @@ or if you use http-auth
 
 ```puppet
 influx_database{"testme2":
+  ensure => present,
   superuser => 'john',
   superpass => 'lennon'
 }
