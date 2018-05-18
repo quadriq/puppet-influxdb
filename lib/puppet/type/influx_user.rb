@@ -12,7 +12,7 @@ Puppet::Type.newtype(:influx_user) do
 
   newparam(:admin) do
     desc "if admin or not"
-    defaultto :false
+    defaultto false
   end
 
   newparam(:database) do
