@@ -1,6 +1,5 @@
 # class to install influxdb
 class influxdb::install(
-  $version,
 ){
 
   file { 'influx.repo':
