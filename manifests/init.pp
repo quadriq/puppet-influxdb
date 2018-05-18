@@ -1,6 +1,5 @@
 # class dbinflux
 class influxdb(
-  $version = '1.5.2',
   $config  = {},
   $config_template = 'influxdb/influxdb.conf.erb',
   $auth_enabled = false,
@@ -21,7 +20,6 @@ class influxdb(
   }
 
   class{'influxdb::install':
-    version => $version,
   } ->
 
   class{'influxdb::config':
