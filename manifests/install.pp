@@ -2,10 +2,17 @@
 class influxdb::install(
   $version,
 ){
-  package { 'influxdb_rpm':
+
+  file { 'influx.repo':
+        ensure => file,
+        path   => '/etc/yum.repos.d/influx.repo',
+        source => 'puppet:///modules/influxdb/influx.repo',
+        owner  => 'root',
+        group  => 'root',
+        mode   => '0644',
+  } ->
+    
+  package { 'influxdb':
     ensure   => installed,
-    name     => 'influxdb',
-    provider => 'rpm',
-    source   => "https://dl.influxdata.com/influxdb/releases/influxdb-${version}.x86_64.rpm"
   }
 }
