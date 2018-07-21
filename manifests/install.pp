@@ -1,5 +1,6 @@
 # class to install influxdb
 class influxdb::install(
+  $package_ensure,
 ){
 
   file { 'influx.repo':
@@ -10,8 +11,8 @@ class influxdb::install(
         group  => 'root',
         mode   => '0644',
   } ->
-    
+
   package { 'influxdb':
-    ensure   => installed,
+    ensure   => $package_ensure,
   }
 }

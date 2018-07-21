@@ -5,6 +5,7 @@ class influxdb(
   $auth_enabled = false,
   $auth_superuser = undef,
   $auth_superpass = undef,
+  $package_ensure = 'installed'
 ) {
 
   if ($auth_enabled){
@@ -20,6 +21,7 @@ class influxdb(
   }
 
   class{'influxdb::install':
+    package_ensure => $package_ensure,
   } ->
 
   class{'influxdb::config':
