@@ -60,6 +60,13 @@ class influxdb::config(
         'unix-socket-enabled' => false,
         'bind-socket' => '/var/run/influxdb.sock',
       },
+      'graphite' => {
+        'enabled' => false,
+        'database' => 'graphite',
+        'retention-policy' => '',
+        'bind-address' => ':2003',
+        'protocol' => 'tcp',
+      },
   }
 
   $final_config = deep_merge($default_config, $config)

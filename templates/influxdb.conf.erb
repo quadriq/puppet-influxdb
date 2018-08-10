@@ -322,11 +322,11 @@ bind-address = "<%= @final_config['global']['bind-adress'] %>"
 
 [[graphite]]
   # Determines whether the graphite endpoint is enabled.
-  # enabled = false
-  # database = "graphite"
-  # retention-policy = ""
-  # bind-address = ":2003"
-  # protocol = "tcp"
+  enabled = <%= @final_config['graphite']['enabled'] %>
+  database = "<%= @final_config['graphite']['database'] %>"
+  retention-policy = "<%= @final_config['graphite']['retention-policy'] %>"
+  bind-address = "<%= @final_config['graphite']['bind-address'] %>"
+  protocol = "<%= @final_config['graphite']['protocol'] %>"
   # consistency-level = "one"
 
   # These next lines control how batching works. You should have this enabled
