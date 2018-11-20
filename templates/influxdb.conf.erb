@@ -436,8 +436,11 @@ bind-address = "<%= @final_config['global']['bind-adress'] %>"
 
 [[udp]]
   # enabled = false
+  enabled = <%= @final_config['udp']['enabled'] %>
   # bind-address = ":8089"
+  bind-address = "<%= @final_config['udp']['bind-address'] %>"
   # database = "udp"
+  database = "<%= @final_config['udp']['database'] %>"
   # retention-policy = ""
 
   # These next lines control how batching works. You should have this enabled
@@ -446,15 +449,19 @@ bind-address = "<%= @final_config['global']['bind-adress'] %>"
 
   # Flush if this many points get buffered
   # batch-size = 5000
+  batch-size = <%= @final_config['udp']['batch-size'] %>
 
   # Number of batches that may be pending in memory
   # batch-pending = 10
+  batch-pending = <%= @final_config['udp']['batch-pending'] %>
 
   # Will flush at least this often even if we haven't hit buffer limit
   # batch-timeout = "1s"
+  batch-timeout = "<%= @final_config['udp']['batch-timeout'] %>"
 
   # UDP Read buffer size, 0 means OS default. UDP listener will fail if set above OS max.
   # read-buffer = 0
+  read-buffer= <%= @final_config['udp']['read-buffer'] %>
 
 ###
 ### [continuous_queries]
