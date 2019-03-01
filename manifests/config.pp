@@ -60,6 +60,16 @@ class influxdb::config(
         'unix-socket-enabled' => false,
         'bind-socket' => '/var/run/influxdb.sock',
       },
+      'udp' => {
+        'enabled' => false,
+        'bind-address => ':8089',
+        'database' => 'udp',
+        'retention-policy' => '',
+        'batch-size' => '5000',
+        'batch-pending' => 10,
+        'batch-timeout' => '1s',
+        'read-buffer' => 0
+      },
       'graphite' => {
         'enabled' => false,
         'database' => 'graphite',
