@@ -21,7 +21,7 @@ classes:
 
 > note, not all parameters are introduced right now,  Welcome Contribution!
 
-see `manifests/config.pp` for supported parameters. Otherwise you can do:
+see `manifests/config.pp` for supported parameters. Here is a usage example:
 
 ```puppet
 $parameter =
@@ -53,7 +53,7 @@ influxdb::config:
 
 ## Enable http-auth
 
-by design, influxdb needs an "admin" user before you can enable http-auth in influxdb-config. So in order to manage this with puppet we need to pass "admin" creadentials to the influx class.. we would call this admin user - __superuser__
+by design, influxdb needs an "admin" user __before__ you can enable http-auth in influxdb-config. So in order to manage this with puppet we need to pass "admin" creadentials to the influx class.. we would call this admin user - __superuser__
 
 so call it like:
 
@@ -67,7 +67,7 @@ class {"influxdb":
 
 ## Custom resource-types
 
-all resource types using `influx` cli command to communicate with influxdb. Because `influx` cli command uses http interface of influxdb, we also need to do a http-auth, if this is enabled. So pass `superuser` creadentials to all resource types, if http-auth is enabled.
+all resource types using `influx` cli command to communicate with influxdb. Because `influx` cli command uses __http interface of influxdb__, we also need to do a http-auth, if this is enabled. So pass `superuser` creadentials to all resource types, if http-auth is enabled.
 
 ### influx_database
 
@@ -114,6 +114,4 @@ influx_user{"homer":
 }
 ```
 
-## Notable
-
-* all custom resources have 20sec delay, in order to wait for influxdb to startup, if it was restarted just before.
+> all custom resources have 20sec delay, in order to wait for influxdb to startup, if it was restarted just before.
