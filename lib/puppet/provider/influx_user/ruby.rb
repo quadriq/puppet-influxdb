@@ -20,7 +20,7 @@ Puppet::Type.type(:influx_user).provide :ruby do
 
     dbcmd =  `influx #{auth_data} -execute 'SHOW USERS' -format json`
     dbjson = JSON.parse(dbcmd)
-    if dbjson["results"][0]["series"][0]["values"].any? { |i| i[0] == resource[:name] and i[1].to_s.downcase == resource[:admin].to_s.downcase}
+    if dbjson["results"][0]["series"][0]["columns"].any? { |i| i[0] == resource[:name] and i[1].to_s.downcase == resource[:admin].to_s.downcase}
       return true
     end
     false
