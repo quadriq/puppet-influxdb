@@ -10,20 +10,27 @@ Puppet::Type.type(:influx_user).provide :ruby do
     end
     user_str
   end
- 
+
   def exists?
-    sleep(20)
+    sleep(10)
 
     if !resource[:admin] and resource[:database] == :undef
       raise ArgumentError, "User %s should belong to database. Database is not defined" % resource[:name]
     end
 
-    dbcmd =  `influx #{auth_data} -execute 'SHOW USERS' -format json`
+    dbcmd = `influx #{auth_data} -execute 'SHOW USERS' -format json`
     dbjson = JSON.parse(dbcmd)
-    if dbjson["results"][0]["series"][0]["columns"].any? { |i| i[0] == resource[:name] and i[1].to_s.downcase == resource[:admin].to_s.downcase}
-      return true
+
+    if dbjson["results"][0]["series"][0].key?("values")
+      if dbjson["results"][0]["series"][0]["values"].any? { |s| s.include?(resource[:name]) }
+        return true
+      else
+        return false
+      end
+    else
+      return false
     end
-    false
+
   end
 
   def create
