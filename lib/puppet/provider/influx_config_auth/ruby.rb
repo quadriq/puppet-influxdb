@@ -11,17 +11,17 @@ Puppet::Type.type(:influx_config_auth).provide :ruby do
       sleep(10)
 
       # stop influx and create conf backup
-      p " > stopping influxdb"
-      `systemctl stop influxd`
+      p " > stopping #{resource[:servicename]}"
+      `systemctl stop #{resource[:servicename]}`
       `/bin/cp -rf /etc/influxdb/influxdb.conf /tmp/influxdb.conf`
 
       # start influx with default config
       p " > start influx without auth and recreate superuser"
-      #`influxd config > /etc/influxdb/influxdb.conf`
+      #`influxdb config > /etc/influxdb/influxdb.conf`
       #`/bin/sed -i -e 's/\\/root\\/.influxdb/\\/var\\/lib\\/influxdb\\/i/g' /etc/influxdb/influxdb.conf`
-      
+
       `sed -i 's/  auth-enabled.*/  auth-enabled = false/'  /etc/influxdb/influxdb.conf`
-      `systemctl start influxd`
+      `systemctl start #{resource[:servicename]}`
       sleep(10)
 
       p " > drop user '#{resource[:superuser]}', if exists"
@@ -31,9 +31,9 @@ Puppet::Type.type(:influx_config_auth).provide :ruby do
       `influx -execute "CREATE USER #{resource[:superuser]} WITH PASSWORD '#{resource[:superpass]}' WITH ALL PRIVILEGES"`
       # restart influx with old config
       p " > restart influx and try again"
-      `systemctl stop influxd`
+      `systemctl stop #{resource[:servicename]}`
       `mv /tmp/influxdb.conf /etc/influxdb/influxdb.conf`
-      `systemctl start influxd`
+      `systemctl start #{resource[:servicename]}`
       sleep(10)
 
       # check again
