@@ -22,7 +22,7 @@ Puppet::Type.type(:influx_config_auth).provide :ruby do
 
       `sed -i 's/  auth-enabled.*/  auth-enabled = false/'  /etc/influxdb/influxdb.conf`
       `systemctl start #{resource[:servicename]}`
-      sleep(10)
+      sleep(20)
 
       p " > drop user '#{resource[:superuser]}', if exists"
       `influx -execute "DROP USER #{resource[:superuser]}"`
@@ -33,8 +33,9 @@ Puppet::Type.type(:influx_config_auth).provide :ruby do
       p " > restart influx and try again"
       `systemctl stop #{resource[:servicename]}`
       `mv /tmp/influxdb.conf /etc/influxdb/influxdb.conf`
+      `chown influxdb:influxdb /etc/influxdb/influxdb.conf`
       `systemctl start #{resource[:servicename]}`
-      sleep(10)
+      sleep(20)
 
       # check again
       if !system("influx  -username #{resource["superuser"]} -password #{resource["superpass"]} -execute ';'")
