@@ -21,7 +21,7 @@ class influxdb(
   $manage_repo    = true,
   $package_ensure = 'installed',
   $repo_ensure    = 'present',
-  $service_name   = 'influxdb'
+  $service_name   = 'influxdb',
   $service_ensure = 'running',
   $service_enable = true,
 ) {
