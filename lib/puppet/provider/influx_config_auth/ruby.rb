@@ -6,7 +6,7 @@ Puppet::Type.type(:influx_config_auth).provide :ruby do
 
     sleep(10)
 
-    if !system("influx -username #{resource["superuser"]} -password #{resource["superpass"]} -execute ';'")
+    if !system("influx -username #{resource["superuser"]} -password '#{resource["superpass"]}' -execute ';'")
       p " > auth disabled, or superuser is wrong.. lets fix it"
       sleep(10)
 
@@ -38,7 +38,7 @@ Puppet::Type.type(:influx_config_auth).provide :ruby do
       sleep(20)
 
       # check again
-      if !system("influx  -username #{resource["superuser"]} -password #{resource["superpass"]} -execute ';'")
+      if !system("influx  -username #{resource["superuser"]} -password '#{resource["superpass"]}' -execute ';'")
         p " > auth still wrong :("
         return false
       else

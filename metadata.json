@@ -1,6 +1,6 @@
 {
   "name": "quadriq-influxdb",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Nilsen",
   "summary": "Manage InfluxDB service, databases, users. Supports Auth. Using ruby resource types for InfluxDB operations. ",
   "license": "Apache-2.0",
