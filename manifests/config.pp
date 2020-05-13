@@ -69,7 +69,7 @@ class influxdb::config(
         'batch-size' => '5000',
         'batch-pending' => 10,
         'batch-timeout' => '1s',
-        'read-buffer' => 0
+        'read-buffer' => 0,
       },
       'graphite' => {
         'enabled' => false,
@@ -84,6 +84,6 @@ class influxdb::config(
 
   file {'/etc/influxdb/influxdb.conf':
     content => template($config_template),
-    notify  => Service[$influxdb::service_name]
+    notify  => Service[$influxdb::service_name],
   }
 }
