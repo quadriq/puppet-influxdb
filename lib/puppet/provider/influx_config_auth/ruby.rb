@@ -1,13 +1,11 @@
 require 'json'
 
 Puppet::Type.type(:influx_config_auth).provide :ruby do
-
   def exists?
-
     sleep(10)
 
-    if !system("influx -username #{resource["superuser"]} -password '#{resource["superpass"]}' -execute ';'")
-      p " > auth disabled, or superuser is wrong.. lets fix it"
+    if !system("influx -username #{resource[:superuser]} -password '#{resource[:superpass]}' -execute ';'")
+      p ' > auth disabled, or superuser is wrong.. lets fix it'
       sleep(10)
 
       # stop influx and create conf backup
@@ -16,9 +14,9 @@ Puppet::Type.type(:influx_config_auth).provide :ruby do
       `/bin/cp -rf /etc/influxdb/influxdb.conf /tmp/influxdb.conf`
 
       # start influx with default config
-      p " > start influx without auth and recreate superuser"
-      #`influxdb config > /etc/influxdb/influxdb.conf`
-      #`/bin/sed -i -e 's/\\/root\\/.influxdb/\\/var\\/lib\\/influxdb\\/i/g' /etc/influxdb/influxdb.conf`
+      p ' > start influx without auth and recreate superuser'
+      # `influxdb config > /etc/influxdb/influxdb.conf`
+      # `/bin/sed -i -e 's/\\/root\\/.influxdb/\\/var\\/lib\\/influxdb\\/i/g' /etc/influxdb/influxdb.conf`
 
       `sed -i 's/  auth-enabled.*/  auth-enabled = false/'  /etc/influxdb/influxdb.conf`
       `systemctl start #{resource[:servicename]}`
@@ -30,7 +28,7 @@ Puppet::Type.type(:influx_config_auth).provide :ruby do
       p " > create user '#{resource[:superuser]}'"
       `influx -execute "CREATE USER #{resource[:superuser]} WITH PASSWORD '#{resource[:superpass]}' WITH ALL PRIVILEGES"`
       # restart influx with old config
-      p " > restart influx and try again"
+      p ' > restart influx and try again'
       `systemctl stop #{resource[:servicename]}`
       `mv /tmp/influxdb.conf /etc/influxdb/influxdb.conf`
       `chown influxdb:influxdb /etc/influxdb/influxdb.conf`
@@ -38,11 +36,11 @@ Puppet::Type.type(:influx_config_auth).provide :ruby do
       sleep(20)
 
       # check again
-      if !system("influx  -username #{resource["superuser"]} -password '#{resource["superpass"]}' -execute ';'")
-        p " > auth still wrong :("
+      if !system("influx  -username #{resource[:superuser]} -password '#{resource[:superpass]}' -execute ';'")
+        p ' > auth still wrong :('
         return false
       else
-        p " > auth configured"
+        p ' > auth configured'
         return true
       end
     else
@@ -58,11 +56,10 @@ Puppet::Type.type(:influx_config_auth).provide :ruby do
   end
 
   def destroy
-    "destroyed"
+    'destroyed'
   end
 
   def create
-    "created"
+    'created'
   end
-
 end

@@ -31,7 +31,7 @@ class influxdb(
       'http' => {
         'enabled' => true,
         'auth-enabled' => true,
-      }
+      },
     }
     $mconfig = deep_merge($config, $auth_config)
   } else {
@@ -43,22 +43,22 @@ class influxdb(
     manage_repo    => $manage_repo,
     package_ensure => $package_ensure,
     repo_ensure    => $repo_ensure,
-  } ->
+  }
 
-  class{'influxdb::config':
-    config => $mconfig,
+  -> class{'influxdb::config':
+    config          => $mconfig,
     config_template => $config_template,
-  } ->
+  }
 
-  service {$service_name:
+  -> service {$service_name:
     ensure => $service_ensure,
     enable => $service_enable,
   }
 
   if ($auth_enabled){
-    influx_config_auth{"config-auth":
+    influx_config_auth{'config-auth':
       superuser => $auth_superuser,
-      superpass => $auth_superpass
+      superpass => $auth_superpass,
     }
   }
 }
