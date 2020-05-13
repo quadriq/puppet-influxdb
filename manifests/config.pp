@@ -59,16 +59,17 @@ class influxdb::config(
         'max-connection-limit' => 0,
         'unix-socket-enabled' => false,
         'bind-socket' => '/var/run/influxdb.sock',
+        'flux_enable' => true,
       },
       'udp' => {
         'enabled' => false,
-        'bind-address => ':8089',
+        'bind-address' => ':8089',
         'database' => 'udp',
         'retention-policy' => '',
         'batch-size' => '5000',
         'batch-pending' => 10,
         'batch-timeout' => '1s',
-        'read-buffer' => 0
+        'read-buffer' => 0,
       },
       'graphite' => {
         'enabled' => false,
@@ -83,6 +84,6 @@ class influxdb::config(
 
   file {'/etc/influxdb/influxdb.conf':
     content => template($config_template),
-    notify  => Service['influxd']
+    notify  => Service[$influxdb::service_name],
   }
 }

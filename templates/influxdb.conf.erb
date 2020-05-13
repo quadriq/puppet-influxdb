@@ -286,6 +286,9 @@ bind-address = "<%= @final_config['global']['bind-adress'] %>"
   # bind-socket = "/var/run/influxdb.sock"
   bind-socket = "<%= @final_config['http']['bind-socket'] %>"
 
+  # Determines whether FLUX service is enabled
+  flux-enabled = <%= @final_config['http']['flux_enable'] %>
+
 ###
 ### [subscriber]
 ###
