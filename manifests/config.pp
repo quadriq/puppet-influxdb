@@ -59,6 +59,7 @@ class influxdb::config(
         'max-connection-limit' => 0,
         'unix-socket-enabled' => false,
         'bind-socket' => '/var/run/influxdb.sock',
+        'flux_enable' => true,
       },
       'udp' => {
         'enabled' => false,
