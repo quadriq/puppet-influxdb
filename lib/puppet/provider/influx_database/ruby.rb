@@ -5,7 +5,7 @@ Puppet::Type.type(:influx_database).provide :ruby do
   def auth_data
     user_str = ""
     if resource[:superuser]
-      user_str = " -username #{resource["superuser"]} -password #{resource["superpass"]} "
+      user_str = " -username #{resource["superuser"]} -password '#{resource["superpass"]}' "
     end
     user_str
   end

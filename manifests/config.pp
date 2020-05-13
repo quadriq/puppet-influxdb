@@ -84,6 +84,6 @@ class influxdb::config(
 
   file {'/etc/influxdb/influxdb.conf':
     content => template($config_template),
-    notify  => Service['influxd']
+    notify  => Service[$influxdb::service_name]
   }
 }

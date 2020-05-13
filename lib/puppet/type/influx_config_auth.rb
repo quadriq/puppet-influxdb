@@ -14,4 +14,8 @@ Puppet::Type.newtype(:influx_config_auth) do
     desc "Enable or Disable http-auth"
   end
 
+  newparam(:servicename) do
+    desc "Name of the systemd service"
+    defaultto :influxdb
+  end
 end
